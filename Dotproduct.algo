@@ -1,0 +1,75 @@
+
+//.................procedure 
+PROCEDURE dot_Product(v1 ,v2 : ARRAY_OF INTEGER[3],VAR ps:INTEGER)
+VAR
+    i,j:INTEGER;
+
+BEGIN
+    FOR i FROM 0 TO v1.length-1 STEP 1  DO
+        FOR j FROM i TO v2.length-1 STEP 1  DO
+            ps:= ps+v1[i]*v2[j];
+        END_FOR
+    END_FOR
+END
+
+//............procedure call
+ALGORITHM Orthogonal_Vectors
+VAR
+    v1 : ARRAY_OF INTEGER[3];
+    v2 : ARRAY_OF INTEGER[3];
+    ps:INTEGER:=0;
+BEGIN
+    REPEAT
+        Read(n);
+        Write("Input the first vector plz");
+        Read(v1);
+        Write("Input the second vector plz:");
+        Read(v2);
+        dot_Product(v1,v2,ps)
+        IF (ps=0) THEN
+            Write("v1 and v2 are orthogonals")
+        ELSE
+            Write("v1 and v2 are not  orthogonals")
+        END_IF 
+        n:=n+1;
+    UNTIL (n>=20);
+END
+
+
+//................ Function 
+FUNCTION dot_Product(v1, v2  : ARRAY_OF INTEGER[3])
+VAR
+    i,j= INTEGER;
+    ps:INTEGER:=0;
+BEGIN
+    FOR i FROM 0 TO v1.length-1  DO
+        FOR j FROM i TO v2.length-1   DO
+            ps := ps+v1[i]*v2[j];
+        END_FOR
+    END_FOR
+    RETURN ps ;
+END
+
+//................Function call
+ALGORITHM Orthogonal_Vectors
+VAR
+    v1 : ARRAY_OF INTEGER[3];
+    v2 : ARRAY_OF INTEGER[3];
+    ps:INTEGER:=0;
+    n:=INTEGER;
+BEGIN
+    REPEAT
+        Read(n);
+        Write("Input the first vector plz:");
+        Read(v1);
+        Write("Input the second vector plz :");
+        Read(v2);
+        ps:=dot_Product(v1,v2);
+        IF (ps=0) THEN
+            Write("v1 and v2 are orthogonals")
+        ELSE
+            Write("v1 and v2 are not  orthogonals")
+        END_IF  
+        n:= n + 1;
+    UNTIL (n >= 20)
+END
